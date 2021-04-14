@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: netserver
+  namespace: default
+  labels:
+    app: netserver
+spec:
+  nodeName: a-ms-2004-win-0
+  containers:
+  - image: "harbor-repo.vmware.com/dockerhub-proxy-cache/e2eteam/agnhost:2.20"
+    args: ["netexec", "--http-port=8080","--udp-port=8081"]
+    ports:
+    - containerPort: 8080
+      name: http
+    - containerPort: 8081
+      name: udp
+    imagePullPolicy: IfNotPresent
+    name: netserver
+  restartPolicy: Always

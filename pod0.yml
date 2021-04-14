@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox0
+  namespace: default
+  labels:
+    app: busybox0
+spec:
+  nodeName: "a-ms-2004-0"
+  containers:
+  - image: projects.registry.vmware.com/library/busybox
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+  restartPolicy: Always

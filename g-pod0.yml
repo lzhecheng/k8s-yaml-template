@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tbx0
+  namespace: trate
+spec:
+  nodeName: "a-ms-2006-0"
+  containers:
+  - name: toolbox
+    image: gcr.io/google-containers/toolbox:latest
+    args: ["/bin/bash", "-c", "while true; do sleep 10; done"]
+    imagePullPolicy: IfNotPresent
+  nodeSelector:
+    kubernetes.io/os: linux

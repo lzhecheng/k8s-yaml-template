@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-client-a-via-named-port-ingress-rule
+  namespace: default
+spec:
+  ingress:
+  - ports:
+    - port: serve-80
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      pod-name: server
+  policyTypes:
+  - Ingress

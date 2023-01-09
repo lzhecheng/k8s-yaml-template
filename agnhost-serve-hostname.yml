@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: agnhost
+  namespace: default
+  labels:
+    app: MyApp
+spec:
+  containers:
+  - image: "projects.registry.vmware.com/antrea/agnhost:2.26"
+    args:
+      - serve-hostname
+      - --port=80
+    imagePullPolicy: IfNotPresent
+    name: netexec
+  restartPolicy: Always

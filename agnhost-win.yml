@@ -6,7 +6,7 @@ metadata:
   labels:
     app: netserver
 spec:
-  nodeName: a-ms-2004-win-0
+  nodeName: <nodename>
   containers:
   - image: "harbor-repo.vmware.com/dockerhub-proxy-cache/e2eteam/agnhost:2.20"
     args: ["netexec", "--http-port=8080","--udp-port=8081"]

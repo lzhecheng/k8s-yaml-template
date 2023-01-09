@@ -6,7 +6,6 @@ metadata:
   labels:
     app: MyApp
 spec:
-  nodeName: a-ms-2004-0
   containers:
   - image: "projects.registry.vmware.com/antrea/agnhost:2.26"
     args:
@@ -16,3 +15,14 @@ spec:
     imagePullPolicy: IfNotPresent
     name: netexec
   restartPolicy: Always
+  tolerations:
+          #hostNetwork: true
+  - key: "node-role.kubernetes.io/master"
+    operator: "Exists"
+    effect: "NoSchedule"
+  - key: "node-role.kubernetes.io/control-plane"
+    operator: "Exists"
+    effect: "NoSchedule"
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
+
